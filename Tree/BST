@@ -1,1 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#define data(tree) ((tree)->data)
+#define left(tree) ((tree)->left)
+#define right(tree) ((tree)->right)
+
+typedef int item;
+typedef struct Node* Tree;
+typedef struct Node{
+	item data;
+	Tree left, right;
+}Node;
+
+
+//create a new node
+Tree newNode(item data){
+	Node p = malloc(sizeof(Node));
+	assert(p != NULL);
+	data(tree) = data;
+	left(tree) = right(tree) = NULL;
+	return p;
+}
+
+
+//create a enpty tree
+Tree newTree(){
+	return NULL;
+}
+
+//free all nodes
+void freeTree(Tree tree){
+	if (t != NULL){
+		freeTree(left(tree));
+		freeTree(right(tree));
+		free(tree); 
+	}
+}
+
+//show the tree
+void showTree(Tree t, int depth){
+	printf("%d\n", data(t));
+	*depth++;
+	if (t != NULL){
+		showTree(right(t), depth + 1);
+		int i;
+		for (i = 0 ; i < depth; ++i){
+			printf('\t');
+			printf("%d\n", data(t));
+			showTree(left(t), depth + 1);
+		}
+	}
+}
+
+//count the numvber of nodes
+int numOfNodes(Tree t){
+	if (t != NULL){
+		return numsOfNodes(left(t)) + numsOfNodes(right(t)) + 1;
+	}
+	return 0;
+}
+
+//search items in BST
+bool treeSearch(Tree t, item val){
+	if (t == NULL){
+		return false;
+	}
+	if (data(t) > val){
+		return treeSearch(left(tree), val);
+	}else if (data(t) < val){
+		return treeSearch(right(tree), val);
+	}else{
+		return true;
+	}
+}
+
+//insert nodes
+void insertTree(Tree t, item val){
+	if (t == NULL){
+		return newNode(val);
+	}
+	if ((data(t)) > val){
+		left(t) = insertTree(left(t), item val);
+	}else if( data(t) < val){
+		right(t) = insertTree(right(t), item val);
+	}
+}
 
