@@ -75,6 +75,8 @@ bool treeSearch(Tree t, item val){
 }
 
 //insert nodes
+//the value of left child is always smaller than the value of root, while the value of 
+//right child is always larger than that of root.
 void insertTree(Tree t, item val){
 	if (t == NULL){
 		return newNode(val);
@@ -84,5 +86,58 @@ void insertTree(Tree t, item val){
 	}else if( data(t) < val){
 		right(t) = insertTree(right(t), item val);
 	}
+}
+
+//concatenate two trees
+//find the min node of t2
+//elevate the min node to be the root node, while its left child is t1 and its right child is t2
+Tree joinTree(Tree t1, Tree t2){
+	if (t1 == NULL){
+		return t2;
+	}
+	if (t2 == NULL){
+		return t1;
+	}
+	Tree t = t2;
+	Tree parent = NULL;
+	while (left(t)){
+		parent = t;
+		t = left(t);
+	}
+	if (parent != NULL){
+		left(parent) = right(t);	
+		right(t) = t2;
+	}
+	left(t) = t1;
+	return t2;
+} 
+
+//delete a node, which is harder
+Tree deleteTree(Tree t1, item it){
+	if (t1 != NULL){
+		if (it < data(t1)){
+			deleteTree(left(t1));
+		}else if (it > data(t1)){
+			deleteTree(right(t1));
+		}else{
+			//have four different cases
+			Tree newNode;
+			if (left(t1) == NULL && right(t1) == NULL){
+				newNode = NULL
+			}
+			else if (left(t1) == NULL){
+				newNode = right(t1);
+			}
+			else if (right(t1) == NULL){
+				newNode = left(t1);
+			}else{
+				newNode = join(left(t1), right(t1))
+			}
+			free(t1);
+			t1 = newNode;
+		}		
+	}
+	return t1
+
 }
 
