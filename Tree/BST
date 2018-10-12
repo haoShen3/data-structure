@@ -112,7 +112,7 @@ Tree joinTree(Tree t1, Tree t2){
 	return t2;
 } 
 
-//delete a node, which is harder
+//delete a node, which is a harder operation
 Tree deleteTree(Tree t1, item it){
 	if (t1 != NULL){
 		if (it < data(t1)){
