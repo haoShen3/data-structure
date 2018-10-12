@@ -1,3 +1,31 @@
+"""
+Balanced tree with N nodes has:
+  1.abs(nodes(leftSubtree) - nodes(rightSubtree)) < 2, for every node
+  2.worst case search O(logN)
+Operation for rebalancing:
+  1.left rotation--move right child to root
+  2.right rotation--move right child to root
+  3.cost of tree rotation--O(1)
+"""
+
 #include "BST"
+
+Tree rotateRight(Tree n1) {
+   if (n1 == NULL || left(n1) == NULL)
+      return n1;
+   Tree n2 = left(n1);
+   left(n1) = right(n2);
+   right(n2) = n1;
+   return n2;
+}
+
+Tree rotateLeft(Tree n2) {
+   if (n2 == NULL || right(n2) == NULL)
+      return n2;
+   Tree n1 = right(n2);
+   right(n2) = left(n1);
+   left(n1) = n2;
+   return n1;
+}
 
 
