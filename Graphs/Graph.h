@@ -2,9 +2,6 @@
 
 typedef struct GraphRep *Graph;
 
-// vertices are ints
-typedef int int;
-
 // edges are pairs of vertices (end-points)
 typedef struct Edge {
    int v;
