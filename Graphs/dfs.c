@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #define MAXNODES 1000
 
+//time complexity is O(V**2). while V is the number of vertexes.
 
 //array to store visiting order
 int visited[MAXNODES]; 
