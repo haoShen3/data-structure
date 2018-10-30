@@ -1,5 +1,9 @@
 #include "Graph.c"
 
+"""
+Hamiltonian path problem: ﬁnd a simple path connecting two vertices v,w in graph G such that the path includes each vertex exactly once 
+"""
+	
 bool visited[MAXNODES]
 
 bool hamiltonR(Graph g, int v, int dest, int d){
