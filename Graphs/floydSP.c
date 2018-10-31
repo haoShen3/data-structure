@@ -3,6 +3,16 @@
 #define NODES 6
 #define VERY_HIGH_VALUE 99999
 
+"""
+dist[][]  // array of cost of shortest path from s to t
+path[][]  // array of next node after s on shortest path from s to t
+initialise dist[s][t]=0 for each s=t 
+				  =w for each (s,t,w)edges(G)
+				  =infinity otherwise 
+initialise path[s][t]=t for each (s,t,w)edges(G),
+		   		otherwise to -1
+"""
+	
 int dist[NODES][NODES]
 int path[NODES][NODES]
 
